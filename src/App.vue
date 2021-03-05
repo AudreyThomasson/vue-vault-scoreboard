@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id=app>
+    <!-- calling matchupTitle.vue an passing in the objects of team1
+    and team2 -->
+    <matchup-title :team1="team1" :team2="team2"></matchup-title>
+    <score-card :score="team1.score"></score-card>
+    <score-card :score="team2.score"></score-card>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import MatchupTitle from './components/MatchupTitle.vue';
+import ScoreCard from './components/ScoreCard';
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
-};
+  components: { MatchupTitle, ScoreCard },
+
+  data() {
+    return {
+      team1: {
+        name: "Team 1",
+        score: 0
+      },
+      team2: {
+        name: "Team 2",
+        score: 0
+      }
+
+    };
+  },
+
+}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
